@@ -211,7 +211,7 @@ Evaluate a combination of detector, tracking method and ReID model on standard M
 
 ```bash
 # saves dets and embs under ./runs/dets_n_embs separately for each selected yolo and reid model
-$ python tracking/generate_dets_n_embs.py --source ./assets/MOT17-mini/train --yolo-model yolov8n.pt yolov8s.pt --reid-model weights/osnet_x0_25_msmt17.pt
+$ python tracking/generate_dets_n_embs.py --source ./assets/MOT17-mini/train --yolo-model yolov8n.pt yolov8s.pt --reid-model tracking/weights/osnet_x0_25_msmt17.pt
 # generate MOT challenge format results based on pregenerated detections and embeddings for a specific trackign method
 $ python tracking/generate_mot_results.py --dets yolov8n --embs osnet_x0_25_msmt17 --tracking-method botsort
 # uses TrackEval to generate MOT metrics for the tracking results under ./runs/mot/<dets+embs+tracking-method>
@@ -228,7 +228,7 @@ We use a fast and elitist multiobjective genetic algorithm for tracker hyperpara
 
 ```bash
 # saves dets and embs under ./runs/dets_n_embs separately for each selected yolo and reid model
-$ python tracking/generate_dets_n_embs.py --source ./assets/MOT17-mini/train --yolo-model yolov8n.pt yolov8s.pt --reid-model weights/osnet_x0_25_msmt17.pt
+$ python tracking/generate_dets_n_embs.py --source ./assets/MOT17-mini/train --yolo-model yolov8n.pt yolov8s.pt --reid-model tracking/weights/osnet_x0_25_msmt17.pt
 # evolve parameters for specified tracking method using the selected detections and embeddings generated in the previous step
 $ python tracking/evolve.py --benchmark MOT17-mini --dets yolov8n --embs osnet_x0_25_msmt17 --n-trials 9 --tracking-method botsort
 ```
