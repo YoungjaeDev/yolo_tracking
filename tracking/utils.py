@@ -118,8 +118,10 @@ def unzip_mot_dataset(zip_path, val_tools_path, benchmark):
         LOGGER.warning(f'No zip file. Skipping unzipping')
         return None
 
-    extract_path = val_tools_path / 'data' / benchmark
-    if not extract_path.exists():
+    # extract_path = val_tools_path / 'data' / benchmark
+    extract_path = val_tools_path / 'data'
+    benchmark_path = extract_path / benchmark
+    if not benchmark_path.exists():
         try:
             with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 zip_ref.extractall(extract_path)
@@ -131,7 +133,7 @@ def unzip_mot_dataset(zip_path, val_tools_path, benchmark):
             LOGGER.error(f'An error occurred while unzipping {zip_path.name}: {e}')
     else:
         LOGGER.info(f'{benchmark} folder already exists.')
-        return extract_path
+        return benchmark_path
 
 
 def eval_setup(opt, val_tools_path):
