@@ -111,9 +111,9 @@ def run(args):
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--yolo-model', nargs='+', type=Path, default=WEIGHTS / 'yolov8n',
+    parser.add_argument('--yolo-model', nargs='+', type=Path, default=[WEIGHTS / 'yolov8n'],
                         help='yolo model path')
-    parser.add_argument('--reid-model', nargs='+', type=Path, default=WEIGHTS / 'osnet_x0_25_msmt17.pt',
+    parser.add_argument('--reid-model', nargs='+', type=Path, default=[WEIGHTS / 'osnet_x0_25_msmt17.pt'],
                         help='reid model path')
     parser.add_argument('--source', type=str, default='0',
                         help='file/dir/URL/glob, 0 for webcam')
