@@ -153,7 +153,9 @@ def parse_opt():
 
 if __name__ == "__main__":
     opt = parse_opt()
-    mot_folder_paths = [item for item in Path(opt.source).iterdir()]
+    # mot_folder_paths = [item for item in Path(opt.source).iterdir()]
+    mot_folder_paths = [item for item in Path(opt.source).iterdir() if item.is_dir()]
+    
     print(mot_folder_paths)
     for y in opt.yolo_model:
         opt.yolo_model = y
