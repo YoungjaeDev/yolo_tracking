@@ -177,6 +177,11 @@ def eval_setup(opt, val_tools_path):
         base_path = ROOT / 'assets' / opt.benchmark / opt.split
         mot_seqs_path = gt_folder = base_path
         seq_paths = [p / 'img1' for p in mot_seqs_path.iterdir() if p.is_dir()]
+    elif opt.benchmark == 'KISA':
+        # Adjust paths for KISA dataset
+        base_path = ROOT / 'datasets'
+        mot_seqs_path = gt_folder = base_path
+        seq_paths = [p / 'img1' for p in mot_seqs_path.iterdir() if p.is_dir()]
     else:
         # Default handling for other datasets
         seq_paths = [p / 'img1' for p in mot_seqs_path.iterdir() if p.is_dir()]
